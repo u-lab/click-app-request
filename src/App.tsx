@@ -1,8 +1,18 @@
-import React from 'react';
+import useSWR from 'swr';
 import logo from './logo.svg';
-import './App.css';
+import { fetchApprovalContent } from './service/fetchApprovalContent';
+import './styles/App.css';
 
-function App() {
+const App = () => {
+  // 許可された要望を取得
+  const { data } = useSWR('fetchApprovalContent', fetchApprovalContent)
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(data)
+
   return (
     <div className="App">
       <header className="App-header">
