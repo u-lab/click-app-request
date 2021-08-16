@@ -6,5 +6,5 @@ import { fetchSpreadSheet } from "../infra/spread_sheet/fetchSpreadSheet"
 export const fetchApprovalContent = async () => {
     const data = await fetchSpreadSheet()
 
-    return data.filter(v => v.public)
+    return data.filter(v => v.public).reverse()
 }
